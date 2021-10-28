@@ -1,7 +1,9 @@
 #################################################
 #TCC nova versao
 ################################################
-
+#pacotes para utilizar o GIT e/ou Git\hub
+install.packages("usethis")
+library(usethis)
 ##################################################
 #exemplo pratico
 
@@ -112,91 +114,253 @@ names(dados)
 
 summary(dados)
 
-#grfico da serie
+#######################
+dadossup=dados
+#######################
+names(dados)
+
+Ano=dados$Ano
+Mes=dados$Mes
+##########################
+
+#grafico da serie
+
+###############################################################
 ts.plot(dados$X10_14, xlab="Tempo",ylab="Frequência",main="10|-|14")
-#
+#Nao estacionario
+acf(dados$X10_14,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+A=diff(dados$X10_14)
+dados["Classe1"]=A
+ts.plot(A, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 10 a 14")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X15_19, xlab="Tempo",ylab="Frequência",main="15|-|19")
-#
+#Nao estacionario
+acf(dados$X15_19,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+B=diff(dados$X15_19)
+dados["Classe2"]=B
+ts.plot(B, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 15 a 19")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X20_24, xlab="Tempo",ylab="Frequência",main="20|-|24")
-#
+#Nao estacionario
+acf(dados$X20_24,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+C=diff(dados$X20_24)
+dados["Classe3"]=C
+ts.plot(C, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 20 a 24")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X25_29, xlab="Tempo",ylab="Frequência",main="25|-|29")
-#
+#Nao estacionario
+acf(dados$X25_29,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+D=diff(dados$X25_29)
+dados["Classe4"]=D
+ts.plot(D, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 25 a 29")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X30_34, xlab="Tempo",ylab="Frequência",main="30|-|34")
-#
+#Nao estacionario
+acf(dados$X30_34,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+E=diff(dados$X30_34)
+dados["Classe5"]=E
+ts.plot(E, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 30 a 34")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X35_39, xlab="Tempo",ylab="Frequência",main="35|-|39")
-#
+#Nao estacionario
+acf(dados$X35_39,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+F=diff(dados$X35_39)
+dados["Classe6"]=F
+ts.plot(F, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 35 a 39")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X40_44, xlab="Tempo",ylab="Frequência",main="40|-|44")
-#
+#Nao estacionario
+acf(dados$X40_44,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+G=diff(dados$X40_44)
+dados["Classe7"]=G
+ts.plot(F, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série 40 a 44")
+#Com a primeira diferenca se tornou estacionario
+
+###############################################################
 ts.plot(dados$X45_49, xlab="Tempo",ylab="Frequência",main="45|-|49")
-#
+H=dados$X45_49
+#estacionario
+acf(dados$X45_49,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+
+###############################################################
 ts.plot(dados$Total, xlab="Tempo",ylab="Frequência",main="Total")
+#Nao estacionario
+acf(dados$Total,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#O decaimento e linear e lento, dando seguranca para dizer que a serie e nao estacionaria
+
+#Armazendo os dados em uma variavél de suporte para aplicar a diferenca
+#Aplicando o filtro primeira vez (diferenca)
+I=diff(dados$Total)
+dados["Classe9"]=I
+ts.plot(I, xlab="Tempo",ylab="Frequência",main="Gráfico da 1ª diferença da série Total")
+#Com a primeira diferenca se tornou estacionario
+
+#######################################################
+
+#Apos aplicar a primeira diferenca todas as series se tornaram estacionarias
+
+######################################################
+#Os graficos acf devem ser feitos da diferenca 
+
+#Gráfico da FAC's e FACP's
+#A ordem do MA eu vejo na FAC
+#A ordem do RA eu vejo na FACP
+
+##############################################################
+#Identificar se há componentes auto regressivos no modelo
+#Nesse passo apenas diz como analisar o gráfico da FAC
+#Lembrando que a analise deve ser feita a partir  do lag 1
+#para o modelo ser AR (auto regressivo) deve atender a todos os seuintes preceitos
+#O decaimento das FAC's é exponencial;
+#O tipo de decaimento depende do sinal de ??(fi);
+#Quando ?? < 0 as FAC's alternam entre valores positivos e negativos
+#Quando ?? > 0 as FAC's são sempre > 0;
+#Quanto menor o valor absoluto de ?? (|??|), mais rapidamente as FAC's irão para zero.
+##############################################################
+
+######################################################
+#CLASSE 1: 10 A 14
+par(mfrow=c(2,1))
+acf(A,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+#
+pacf(A,main="",xlab="Lag",ylab="FACP")
 #
 
 ######################################################
-#Gráfico da FAC's e FACP's
-
-par(mfrow=c(2,1))
-acf(dados$X10_14,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
-#
-pacf(dados$X10_14,main="",xlab="Lag",ylab="FACP")
-#
-
+#CLASSE 2: 15 A 19
 ##
 par(mfrow=c(2,1))
-acf(dados$X15_19,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(B,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X15_19,main="",xlab="Lag",ylab="FACP")
+pacf(B,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 3: 20 A 24 
 ##
 par(mfrow=c(2,1))
-acf(dados$X20_24,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(C,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X20_24,main="",xlab="Lag",ylab="FACP")
+pacf(C,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 4: 25 A 29
 ##
 par(mfrow=c(2,1))
-acf(dados$X25_29,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(D,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X25_29,main="",xlab="Lag",ylab="FACP")
+pacf(D,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 5: 30 A 34
 ##
 par(mfrow=c(2,1))
-acf(dados$X30_34,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(E,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X30_34,main="",xlab="Lag",ylab="FACP")
+pacf(E,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 6: 35 A 39
 ##
 par(mfrow=c(2,1))
-acf(dados$X35_39,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(F,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X35_39,main="",xlab="Lag",ylab="FACP")
+pacf(F,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 7 40 A 44
 ##
 par(mfrow=c(2,1))
-acf(dados$X40_44,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(G,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X40_44,main="",xlab="Lag",ylab="FACP")
+pacf(G,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 8 45 A 49 
 ##
 par(mfrow=c(2,1))
-acf(dados$X45_49,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(H,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$X45_49,main="",xlab="Lag",ylab="FACP")
+pacf(H,main="",xlab="Lag",ylab="FACP")
 #
 
+######################################################
+#CLASSE 9: TOTAL
 ##
 par(mfrow=c(2,1))
-acf(dados$Total,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
+acf(I,main="",xlab="Lag",ylab="FAC",xlim=c(1,20))
 #
-pacf(dados$Total,main="",xlab="Lag",ylab="FACP")
+pacf(I,main="",xlab="Lag",ylab="FACP")
 #
 
-#########################################
+######################################################
+summary(A)
+######################################################
+summary(B)
+######################################################
+summary(C)
+######################################################
+summary(D)
+######################################################
+summary(E)
+######################################################
+summary(F)
+######################################################
+summary(G)
+######################################################
+summary(H)
+######################################################
+summary(I)
+######################################################
 
+
+ts.sim <- poinar.sim(n = 100, order.max = 2, alpha = c(0.1,0.4),lambda = 2, n.start=200)
+ts.plot(ts.sim, xlab="Tempo", ylab="Frequência",
+        main="Exemplo prático de uso do pacote")
+######################################################
   
